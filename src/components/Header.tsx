@@ -11,6 +11,7 @@ function Header({ title, subtitle }: HeaderProps) {
   return (
     <div className="header">
       <div className="header-content">
+        
         <h1>{title}</h1>
         {subtitle && <p>{subtitle}</p>}
       </div>

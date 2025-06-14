@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Team } from './types';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import TeamList from './components/TeamList';
 import './App.scss';
 
 function App() {
@@ -42,6 +43,12 @@ function App() {
     fetchTeams();
   }, []); // empty array means run only once
 
+  // handle when user clicks on a team
+  const handleTeamClick = (team: Team) => {
+    console.log('clicked team:', team.name);
+    // we will add team details view later
+  };
+
   // single return with conditional rendering
   return (
     <div className="app">
@@ -59,15 +66,10 @@ function App() {
             <p>Loading teams...</p>
           </div>
         ) : (
-          <div className="teams-preview">
-            {teams.map(team => (
-              <div key={team.id} className="team-card">
-                <h3>{team.name}</h3>
-                <p>{team.members.length} members</p>
-                <small>Created: {team.createdAt}</small>
-              </div>
-            ))}
-          </div>
+          <TeamList 
+            teams={teams}
+            onTeamClick={handleTeamClick}
+          />
         )}
       </div>
     </div>

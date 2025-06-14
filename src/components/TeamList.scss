@@ -1,0 +1,120 @@
+.team-list {
+  width: 100%;
+}
+
+/* search input styling */
+.search-container {
+  position: relative;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 45px; /* left padding for icon */
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+  transition: border-color 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  }
+  
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+  pointer-events: none; /* cant click on it */
+}
+
+/* results info */
+.results-info {
+  margin-bottom: 15px;
+  
+  p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+/* no results message */
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: white;
+  border-radius: 8px;
+  border: 2px dashed #e0e0e0;
+  
+  p {
+    color: #999;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+/* teams grid */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  
+  /* mobile responsive */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+.team-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  
+  h3 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  small {
+    color: #999;
+    font-size: 12px;
+  }
+  
+  /* hover effect */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-color: #3498db;
+  }
+  
+  /* click effect */
+  &:active {
+    transform: translateY(0);
+  }
+}
