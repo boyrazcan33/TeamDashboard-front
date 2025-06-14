@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Team } from './types';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 import './App.scss';
 
 function App() {
@@ -43,14 +45,20 @@ function App() {
   // single return with conditional rendering
   return (
     <div className="app">
-      <h1>Team Dashboard</h1>
+      <Sidebar />
       
-      {/* show loading or teams based on loading state */}
-      {loading ? (
-        <p>Loading teams...</p>
-      ) : (
-        <>
-          <p>Found {teams.length} teams</p>
+      <div className="main-content">
+        <Header 
+          title="Teams Overview" 
+          subtitle={`Managing ${teams.length} teams`}
+        />
+        
+        {/* show loading or teams based on loading state */}
+        {loading ? (
+          <div className="loading-state">
+            <p>Loading teams...</p>
+          </div>
+        ) : (
           <div className="teams-preview">
             {teams.map(team => (
               <div key={team.id} className="team-card">
@@ -60,8 +68,8 @@ function App() {
               </div>
             ))}
           </div>
-        </>
-      )}
+        )}
+      </div>
     </div>
   );
 }

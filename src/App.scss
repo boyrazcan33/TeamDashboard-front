@@ -10,18 +10,32 @@ body {
 }
 
 .app {
+  display: flex;
   min-height: 100vh;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto; /* center the content */
+}
+
+/* main content area next to sidebar */
+.main-content {
+  flex: 1;
+  margin-left: 250px; /* sidebar width */
+  padding: 20px 30px;
   
-  h1 {
-    color: #2c3e50;
-    margin-bottom: 10px;
+  /* mobile responsive */
+  @media (max-width: 768px) {
+    margin-left: 0;
+    padding: 15px;
   }
+}
+
+/* loading state styles */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
   
   p {
-    margin-bottom: 20px;
+    font-size: 18px;
     color: #666;
   }
 }
@@ -29,9 +43,15 @@ body {
 /* styles for team cards */
 .teams-preview {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  
+  /* mobile responsive */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }
 
 .team-card {
@@ -40,6 +60,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
   
   h3 {
     color: #2c3e50;
@@ -61,7 +82,7 @@ body {
   /* hover effect */
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
   }
 }
