@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Tilt from 'react-parallax-tilt';
 import { Team } from '../types';
 import './TeamList.scss';
 
@@ -51,15 +52,25 @@ function TeamList({ teams, onTeamClick }: TeamListProps) {
           </div>
         ) : (
           filteredTeams.map(team => (
-            <div 
-              key={team.id} 
-              className="team-card"
-              onClick={() => onTeamClick(team)}
+            <Tilt
+              key={team.id}
+              tiltMaxAngleX={10}
+              tiltMaxAngleY={10}
+              scale={1.02}
+              transitionSpeed={300}
+              glareEnable={true}
+              glareMaxOpacity={0.2}
+              className="team-card-tilt"
             >
-              <h3>{team.name}</h3>
-              <p>{team.members.length} members</p>
-              <small>Created: {team.createdAt}</small>
-            </div>
+              <div 
+                className="team-card"
+                onClick={() => onTeamClick(team)}
+              >
+                <h3>{team.name}</h3>
+                <p>{team.members.length} members</p>
+                <small>Created: {team.createdAt}</small>
+              </div>
+            </Tilt>
           ))
         )}
       </div>
