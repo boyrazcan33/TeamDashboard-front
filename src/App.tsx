@@ -9,26 +9,22 @@ import AddTeamForm from './components/forms/AddTeamForm';
 import './App.scss';
 
 function App() {
-  // keep our teams data here
   const [teams, setTeams] = useState<Team[]>([]);
   
   // track if we are still getting data
   const [loading, setLoading] = useState(true);
   
-  // track which view we are showing
   const [currentView, setCurrentView] = useState<ViewType>('list');
   
   // track  team is selected for details view
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   
-  // add team modal state
   const [isAddTeamModalOpen, setIsAddTeamModalOpen] = useState(false);
   
-  // mobile sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // get teams from API
+
     const fetchTeams = async () => {
       try {
         console.log('getting teams from server');
@@ -51,7 +47,6 @@ function App() {
       }
     };
 
-    // start getting data
     fetchTeams();
   }, []); // empty array means run only once
 
@@ -62,13 +57,11 @@ function App() {
     setIsSidebarOpen(false); 
   };
 
-  // handle back button click
   const handleBackToList = () => {
     setCurrentView('list');
     setSelectedTeam(null);
   };
 
-  // handle team update from edit form
   const handleTeamUpdate = (updatedTeam: Team) => {
     console.log('updating team:', updatedTeam);
     
@@ -79,7 +72,6 @@ function App() {
       )
     );
     
-    // update selected team so details view shows new data
     setSelectedTeam(updatedTeam);
   };
 
