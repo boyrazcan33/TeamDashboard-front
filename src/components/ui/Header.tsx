@@ -4,8 +4,8 @@ import './Header.scss';
 interface HeaderProps {
   title: string;
   subtitle?: string;
-  onAddTeam?: () => void; // optional add team function
-  showAddButton?: boolean; // whether to show add button
+  onAddTeam?: () => void; // optional used for 'em
+  showAddButton?: boolean; 
 }
 
 function Header({ title, subtitle, onAddTeam, showAddButton = false }: HeaderProps) {

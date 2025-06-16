@@ -51,24 +51,59 @@ npm run build
 ## Project Structure
 
 ```
-src/
-├── components/
-│   ├── ui/                    # Reusable components
-│   │   ├── Header.tsx/.scss   # Header with gradient text
-│   │   ├── Modal.tsx/.scss    # Modal component
-│   │   └── Sidebar.tsx/.scss  # Navigation sidebar
-│   ├── teams/                 # Team components
-│   │   ├── TeamList.tsx/.scss # Team cards with 3D effects
-│   │   └── TeamDetails.tsx/.scss # Team member management
-│   └── forms/                 # All form components
-│       ├── AddTeamForm.tsx
-│       ├── EditTeamForm.tsx
-│       ├── AddMemberForm.tsx
-│       ├── EditMemberForm.tsx
-│       └── EditTeamForm.scss  # Shared form styles
-├── types/                     # TypeScript interfaces
-├── App.tsx                    # Main app
-└── App.scss                   # Global styles
+team-dashboard/
+├── 📁 public/
+│   ├── 📄 index.html
+│   ├── 📄 manifest.json
+│   └── 📄 robots.txt
+├── 📁 src/
+│   ├── 📁 components/
+│   │   ├── 📁 ui/                    # Reusable UI components
+│   │   │   ├── 📄 Header.tsx         # Header with gradient text
+│   │   │   ├── 📄 Header.scss
+│   │   │   ├── 📄 Modal.tsx          # Modal component
+│   │   │   ├── 📄 Modal.scss
+│   │   │   ├── 📄 Sidebar.tsx        # Navigation sidebar
+│   │   │   └── 📄 Sidebar.scss
+│   │   ├── 📁 teams/                 # Team-specific components
+│   │   │   ├── 📄 TeamList.tsx       # Team cards with 3D effects
+│   │   │   ├── 📄 TeamList.scss
+│   │   │   ├── 📄 TeamDetails.tsx    # Team member management
+│   │   │   └── 📄 TeamDetails.scss
+│   │   └── 📁 forms/                 # Form components
+│   │       ├── 📄 AddTeamForm.tsx
+│   │       ├── 📄 EditTeamForm.tsx
+│   │       ├── 📄 AddMemberForm.tsx
+│   │       ├── 📄 EditMemberForm.tsx
+│   │       └── 📄 EditTeamForm.scss  # Shared form styles
+│   ├── 📁 types/
+│   │   └── 📄 index.ts               # TypeScript interfaces
+│   ├── 📄 App.tsx                    # Main app component
+│   ├── 📄 App.scss                   # Global styles
+│   ├── 📄 index.tsx                  # React entry point
+│   ├── 📄 index.css                  # Base CSS
+│   └── 📄 react-app-env.d.ts        # React types
+├── 📄 package.json
+├── 📄 tsconfig.json
+├── 📄 README.md
+└── 📄 .gitignore
+```
+
+### Component Architecture
+
+```
+App.tsx (Main Container)
+├── Sidebar.tsx (Navigation)
+├── Header.tsx (Dynamic Title & Actions)
+└── Main Content Area
+    ├── TeamList.tsx (Grid View)
+    │   └── TeamCard.tsx (3D Tilt Effect)
+    └── TeamDetails.tsx (Detail View)
+        ├── MemberCard.tsx (Member Info)
+        └── Modals
+            ├── EditTeamForm.tsx
+            ├── AddMemberForm.tsx
+            └── EditMemberForm.tsx
 ```
 
 ## What I Built
@@ -89,6 +124,17 @@ I built this step by step:
 **Things I learned while building this:**
 - 3D card hover effects using react-parallax-tilt
 - Animated CSS gradients for text and backgrounds
+
+## Key Features by Component
+
+| Component | Features |
+|-----------|----------|
+| **TeamList** | 3D card effects, search functionality, responsive grid |
+| **TeamDetails** | Member management, CRUD operations, back navigation |
+| **Header** | Animated gradient text, dynamic content, responsive actions |
+| **Modal** | Escape key handling, backdrop click, smooth animations |
+| **Forms** | Validation, loading states, consistent styling |
+| **Sidebar** | Mobile menu, responsive design, navigation structure |
 
 ## Future Ideas
 

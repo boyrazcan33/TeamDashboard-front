@@ -1,5 +1,4 @@
-// Basic types for our team dashboard
-// These match the structure from the API
+// Basic types for the team dashboard
 
 export interface Member {
   id: number;
@@ -11,15 +10,15 @@ export interface Member {
 export interface Team {
   id: number;
   name: string;
-  createdAt: string; // keeping as string since API returns it as string
+  createdAt: string; //  since API returns it as string
   members: Member[];
 }
 
-// This will help us manage what view we're showing
+// This will help us manage what view weare showing
 export type ViewType = 'list' | 'details';
 
 // New interface for our app state
 export interface AppState {
   currentView: ViewType;
-  selectedTeam: Team | null; // null when no team selected
+  selectedTeam: Team | null; 
 }

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import Tilt from 'react-parallax-tilt';
+import Tilt from 'react-parallax-tilt'; // 3D lib for hover effect
 import './TeamList.scss';
 import { Team } from '../../types';
 
 
-// props that this component expects
+// props  component expects
 interface TeamListProps {
   teams: Team[];
-  onTeamClick: (team: Team) => void; // function to call when team is clicked
+  onTeamClick: (team: Team) => void; // when team is clicked
 }
 
 function TeamList({ teams, onTeamClick }: TeamListProps) {
-  // state for search input
+
   const [searchTerm, setSearchTerm] = useState('');
 
-  // filter teams based on search term
+  // filter teams based on search term (case insensitive!)
   const filteredTeams = teams.filter(team =>
     team.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

@@ -13,7 +13,7 @@ function AddTeamForm({ onSave, onCancel }: AddTeamFormProps) {
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Donot reload the page!
     
     if (!teamName.trim()) {
       alert('Team name is required');
@@ -28,7 +28,7 @@ function AddTeamForm({ onSave, onCancel }: AddTeamFormProps) {
       // create new team
       const newTeam = {
         name: teamName.trim(),
-        createdAt: new Date().toISOString().split('T')[0], // today's date as YYYY-MM-DD
+        createdAt: new Date().toISOString().split('T')[0], // today s date as YYYY-MM-DD
         members: [] // start with empty members
       };
       

@@ -18,7 +18,7 @@ function App() {
   // track which view we are showing
   const [currentView, setCurrentView] = useState<ViewType>('list');
   
-  // track which team is selected for details view
+  // track  team is selected for details view
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   
   // add team modal state
@@ -27,7 +27,6 @@ function App() {
   // mobile sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // run this when component loads
   useEffect(() => {
     // get teams from API
     const fetchTeams = async () => {
@@ -37,12 +36,10 @@ function App() {
         // ask server for data
         const response = await fetch('https://storage.aderize.com/Erik/Test-Works/teams.json');
         
-        // turn response into javascript object
         const data = await response.json();
         
         console.log('got teams:', data);
         
-        // save teams to our state
         setTeams(data);
         
         // not loading anymore
@@ -58,12 +55,11 @@ function App() {
     fetchTeams();
   }, []); // empty array means run only once
 
-  // handle when user clicks on a team
   const handleTeamClick = (team: Team) => {
     console.log('clicked team:', team.name);
     setSelectedTeam(team);
     setCurrentView('details');
-    setIsSidebarOpen(false); // close sidebar on mobile
+    setIsSidebarOpen(false); 
   };
 
   // handle back button click
@@ -133,7 +129,6 @@ function App() {
 
   const headerInfo = getHeaderInfo();
 
-  // single return with conditional rendering
   return (
     <div className={`app ${isSidebarOpen ? 'sidebar-open' : ''}`}>
       {/* mobile menu button */}

@@ -8,7 +8,6 @@ interface SidebarProps {
 
 function Sidebar({ isOpen = false, onClose }: SidebarProps) {
   const handleNavClick = () => {
-    // close sidebar on mobile when nav item clicked
     if (onClose) {
       onClose();
     }

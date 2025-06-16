@@ -1,7 +1,6 @@
 import React from 'react';
 import './Modal.scss';
 
-// props for modal component
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -12,7 +11,7 @@ interface ModalProps {
 function Modal({ isOpen, onClose, title, children }: ModalProps) {
   // handle escape key to close modal - MUST be before early return
   React.useEffect(() => {
-    // only add listener if modal is open
+
     if (!isOpen) return;
 
     const handleEscape = (e: KeyboardEvent) => {
@@ -21,7 +20,6 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
       }
     };
 
-    // add event listener when modal opens
     document.addEventListener('keydown', handleEscape);
 
     // cleanup when modal closes

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Member } from '../../types';
-import './EditTeamForm.scss'; // reuse same styles
+import './EditTeamForm.scss'; 
 
 interface EditMemberFormProps {
   member: Member;

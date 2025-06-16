@@ -11,7 +11,7 @@ interface EditTeamFormProps {
 }
 
 function EditTeamForm({ team, onSave, onCancel }: EditTeamFormProps) {
-  // form state - starts with current team data
+
   const [teamName, setTeamName] = useState(team.name);
   const [saving, setSaving] = useState(false);
 
@@ -19,7 +19,6 @@ function EditTeamForm({ team, onSave, onCancel }: EditTeamFormProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // prevent page reload
     
-    // dont submit if name is empty
     if (!teamName.trim()) {
       alert('Team name cannot be empty');
       return;
