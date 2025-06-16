@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Team } from '../types';
+import { Team } from '../../types';
 import './EditTeamForm.scss';
+
 
 // props for edit team form
 interface EditTeamFormProps {

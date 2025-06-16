@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Team, ViewType } from './types';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import TeamList from './components/TeamList';
-import TeamDetails from './components/TeamDetails';
-import Modal from './components/Modal';
-import AddTeamForm from './components/AddTeamForm';
+import Sidebar from './components/ui/Sidebar';
+import Header from './components/ui/Header';
+import TeamList from './components/teams/TeamList';
+import TeamDetails from './components/teams/TeamDetails';
+import Modal from './components/ui/Modal';
+import AddTeamForm from './components/forms/AddTeamForm';
 import './App.scss';
 
 function App() {

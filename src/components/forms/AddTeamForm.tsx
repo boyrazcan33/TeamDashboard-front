@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Team } from '../types';
+import { Member } from '../../types';
 import './EditTeamForm.scss';
+import { Team } from '../../types';
+
 
 interface AddTeamFormProps {
   onSave: (newTeam: Omit<Team, 'id'>) => void; // new team without id

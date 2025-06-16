@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Team, Member } from '../types';
-import Modal from './Modal';
-import EditTeamForm from './EditTeamForm';
-import EditMemberForm from './EditMemberForm';
-import AddMemberForm from './AddMemberForm';
+import { Team, Member } from '../../types';
+import Modal from '../ui/Modal';
+import EditTeamForm from '../forms/EditTeamForm';
+import EditMemberForm from '../forms/EditMemberForm';
+import AddMemberForm from '../forms/AddMemberForm';
 import './TeamDetails.scss';
 
 interface TeamDetailsProps {

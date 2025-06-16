@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { Member } from '../types';
-import './EditTeamForm.scss'; // reuse same styles
+import { Member } from '../../types';
+import './EditTeamForm.scss';
 
-interface EditMemberFormProps {
-  member: Member;
-  onSave: (updatedMember: Member) => void;
+interface AddMemberFormProps {
+  onSave: (newMember: Omit<Member, 'id'>) => void; // new member without id
   onCancel: () => void;
 }
 
-function EditMemberForm({ member, onSave, onCancel }: EditMemberFormProps) {
-  // form state
-  const [name, setName] = useState(member.name);
-  const [role, setRole] = useState(member.role);
-  const [email, setEmail] = useState(member.email);
+function AddMemberForm({ onSave, onCancel }: AddMemberFormProps) {
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
+  const [email, setEmail] = useState('');
   const [saving, setSaving] = useState(false);
 
-  // handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -29,17 +26,17 @@ function EditMemberForm({ member, onSave, onCancel }: EditMemberFormProps) {
     try {
       await new Promise(resolve => setTimeout(resolve, 800));
       
-      const updatedMember: Member = {
-        ...member,
+      // create new member without id (parent will add id)
+      const newMember = {
         name: name.trim(),
-        role: role.trim(),
+        role: role.trim() || 'Team Member',
         email: email.trim()
       };
       
-      onSave(updatedMember);
+      onSave(newMember);
       
     } catch (error) {
-      alert('Failed to save member');
+      alert('Failed to add member');
     } finally {
       setSaving(false);
     }
@@ -48,38 +45,41 @@ function EditMemberForm({ member, onSave, onCancel }: EditMemberFormProps) {
   return (
     <form onSubmit={handleSubmit} className="edit-team-form">
       <div className="form-group">
-        <label htmlFor="memberName">Name</label>
+        <label htmlFor="newMemberName">Name</label>
         <input
-          id="memberName"
+          id="newMemberName"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="form-input"
+          placeholder="Enter member name"
           disabled={saving}
           autoFocus
         />
       </div>
 
       <div className="form-group">
-        <label htmlFor="memberRole">Role</label>
+        <label htmlFor="newMemberRole">Role</label>
         <input
-          id="memberRole"
+          id="newMemberRole"
           type="text"
           value={role}
           onChange={(e) => setRole(e.target.value)}
           className="form-input"
+          placeholder="e.g. Developer, Designer"
           disabled={saving}
         />
       </div>
 
       <div className="form-group">
-        <label htmlFor="memberEmail">Email</label>
+        <label htmlFor="newMemberEmail">Email</label>
         <input
-          id="memberEmail"
+          id="newMemberEmail"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="form-input"
+          placeholder="member@company.com"
           disabled={saving}
         />
       </div>
@@ -89,11 +89,11 @@ function EditMemberForm({ member, onSave, onCancel }: EditMemberFormProps) {
           Cancel
         </button>
         <button type="submit" className="btn-primary" disabled={saving || !name.trim() || !email.trim()}>
-          {saving ? 'Saving...' : 'Save Changes'}
+          {saving ? 'Adding...' : 'Add Member'}
         </button>
       </div>
     </form>
   );
 }
 
-export default EditMemberForm;
+export default AddMemberForm;

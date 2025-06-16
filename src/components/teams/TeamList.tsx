@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Tilt from 'react-parallax-tilt';
-import { Team } from '../types';
+import { Member } from '../../types';
 import './TeamList.scss';
+import { Team } from '../../types';
+
 
 // props that this component expects
 interface TeamListProps {
