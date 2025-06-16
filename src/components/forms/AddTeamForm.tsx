@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Member } from '../../types';
 import './EditTeamForm.scss';
 import { Team } from '../../types';
 

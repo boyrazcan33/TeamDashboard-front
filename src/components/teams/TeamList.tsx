@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Tilt from 'react-parallax-tilt';
-import { Member } from '../../types';
 import './TeamList.scss';
 import { Team } from '../../types';
 
